@@ -1,0 +1,42 @@
+{% extends "front.html.twig" %}
+
+{% block titre %} Liste des Employes {% endblock %}
+
+{% block body %}
+<main class="container">
+	<h1>Liste des Employes :</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="width:5%">#Id</th>
+                <th style="width:10%">#Prenom</th>
+                <th style="width:10%">#Nom</th>
+				<th style="width:20%">#Telephone</th>
+				<th style="width:20%">#Email</th>
+				<th style="width:50%">#Adresse</th>
+				<th style="width:50%">#Post</th>
+				<th style="width:10%">#Salaire</th>
+                <th style="width:10%">#action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employes in employe %}
+            <tr>
+                <td>{{ employes.id }}</td>
+                <td>{{ employes.prenom }}</td>
+                <td>{{ employes.nom }}</td>
+				<td>{{ employes.telephone }}</td>
+                <td>{{ employes.email }}</td>
+                <td>{{ employes.adresse }}</td>
+				<td>{{ employes.poste }}</td>
+                <td>{{ employes.salaire }}</td>
+                <td>
+                    <a href="{{ path("page_update" , { "id" : employes.id })}}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                    <a href="{{ path("page_suppr" , { "id" : employes.id })}}" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}
